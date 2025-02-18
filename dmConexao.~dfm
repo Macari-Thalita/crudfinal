@@ -3,7 +3,7 @@ object dmConnection: TdmConnection
   Left = 798
   Top = 305
   Height = 336
-  Width = 417
+  Width = 471
   object sqlConexao: TSQLConnection
     Connected = True
     ConnectionName = 'Conexao'
@@ -121,9 +121,35 @@ object dmConnection: TdmConnection
   end
   object qrConsulta: TSQLQuery
     NoMetadata = True
-    MaxBlobSize = 0
+    SQLConnection = sqlConexao
     Params = <>
     Left = 96
     Top = 112
+  end
+  object dsPesquisa: TSQLDataSet
+    NoMetadata = True
+    SQLConnection = sqlConexao
+    Params = <>
+    Left = 392
+    Top = 32
+  end
+  object dspPesquisa: TDataSetProvider
+    DataSet = dsPesquisa
+    Constraints = True
+    UpdateMode = upWhereKeyOnly
+    Left = 392
+    Top = 96
+  end
+  object cdsPesquisa: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspPesquisa'
+    Left = 392
+    Top = 168
+  end
+  object dtsPesquisa: TDataSource
+    DataSet = cdsPesquisa
+    Left = 392
+    Top = 232
   end
 end

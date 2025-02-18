@@ -206,21 +206,13 @@ end;
 
 procedure TfrmClientes.btPesquisarClick(Sender: TObject);
 begin
-//   dmConnection.qrConsulta.Close;
-//   dmConnection.qrConsulta.SQL.Clear;
-//   dmConnection.qrConsulta.SQL.Add('SELECT * FROM CLIENTES');
-//   dmConnection.qrConsulta.Open;
-
    frmPesquisar.gdPesquisar.DataSource := dmConnection.dtsClientes;
-
    frmPesquisar.ShowModal;
-
 
 end;
 
 procedure TfrmClientes.btSelecionarCidadeClick(Sender: TObject);
 begin
-
    frmPesquisar.ShowModal;
 end;
 

@@ -13,6 +13,7 @@ object frmPesquisar: TfrmPesquisar
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnPesquisa: TPanel
@@ -30,20 +31,13 @@ object frmPesquisar: TfrmPesquisar
       Height = 13
       Caption = 'Descri'#231#227'o:'
     end
-    object edPesquisar: TDBEdit
-      Left = 8
-      Top = 32
-      Width = 521
-      Height = 21
-      TabOrder = 0
-    end
     object btFiltrar: TButton
       Left = 8
       Top = 64
       Width = 75
       Height = 25
       Caption = 'Filtrar'
-      TabOrder = 1
+      TabOrder = 0
       OnClick = btFiltrarClick
     end
     object btSelecionar: TButton
@@ -52,6 +46,13 @@ object frmPesquisar: TfrmPesquisar
       Width = 75
       Height = 25
       Caption = 'Selecionar'
+      TabOrder = 1
+    end
+    object edPesquisar: TEdit
+      Left = 8
+      Top = 32
+      Width = 521
+      Height = 21
       TabOrder = 2
     end
   end
@@ -68,6 +69,7 @@ object frmPesquisar: TfrmPesquisar
       Top = 0
       Width = 521
       Height = 169
+      DataSource = dmConnection.dtsPesquisa
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText

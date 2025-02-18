@@ -25,6 +25,10 @@ type
     dsClientesCIDADE_UF: TStringField;
     cdsClientesCIDADE_UF: TStringField;
     qrConsulta: TSQLQuery;
+    dsPesquisa: TSQLDataSet;
+    dspPesquisa: TDataSetProvider;
+    cdsPesquisa: TClientDataSet;
+    dtsPesquisa: TDataSource;
   private
     { Private declarations }
   public

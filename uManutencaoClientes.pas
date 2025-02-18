@@ -206,15 +206,14 @@ end;
 
 procedure TfrmClientes.btPesquisarClick(Sender: TObject);
 begin
-   frmPesquisar.gdPesquisar.DataSource := dmConnection.dtsClientes;
+   frmPesquisar.Tag := 1; //clientes
    frmPesquisar.ShowModal;
-
 
 end;
 
 procedure TfrmClientes.btSelecionarCidadeClick(Sender: TObject);
 begin
-
+   frmPesquisar.Tag := 0; //cidades
    frmPesquisar.ShowModal;
 end;
 
