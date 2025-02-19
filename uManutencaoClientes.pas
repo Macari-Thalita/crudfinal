@@ -48,7 +48,6 @@ type
     procedure btSelecionarCidadeClick(Sender: TObject);
   private
     { Private declarations }
-
   public
     { Public declarations }
   end;
@@ -186,34 +185,36 @@ end;
 
 procedure TfrmClientes.edCodigoCidadeExit(Sender: TObject);
 begin
-   dmConnection.qrConsulta.Close;
-   dmConnection.qrConsulta.SQL.Clear;
-   dmConnection.qrConsulta.SQL.Add('SELECT CIDADE_ID, CIDADE_NOME, CIDADE_UF FROM CIDADES WHERE CIDADE_ID = :pCIDADE');
-   dmConnection.qrConsulta.ParamByName('pCIDADE').AsString := edCodigoCidade.Text;
-   dmConnection.qrConsulta.Open;
+   if(edCodigoCidade.Text <> EmptyStr)then
+   begin
+      dmConnection.qrConsulta.Close;
+      dmConnection.qrConsulta.SQL.Clear;
+      dmConnection.qrConsulta.SQL.Add('SELECT CIDADE_ID, CIDADE_NOME, CIDADE_UF FROM CIDADES WHERE CIDADE_ID = :pCIDADE');
+      dmConnection.qrConsulta.ParamByName('pCIDADE').AsString := edCodigoCidade.Text;
+      dmConnection.qrConsulta.Open;
 
-   If (dmConnection.qrConsulta.IsEmpty) then
-   begin
-      MessageDLG('Cidade não encontrada. Verifique!', mtInformation, [mbOk],0);
-      edCodigoCidade.Setfocus;
-   end
-   else
-   begin
-      edNomeCidade.Text := dmConnection.qrConsulta.FieldByName('CIDADE_NOME').AsString;
-      edUF.Text         := dmConnection.qrConsulta.FieldByName('CIDADE_UF').AsString;
+      If (dmConnection.qrConsulta.IsEmpty) then
+      begin
+         MessageDLG('Cidade não encontrada. Verifique!', mtInformation, [mbOk],0);
+         edCodigoCidade.Setfocus;
+      end
+      else
+      begin
+         edNomeCidade.Text := dmConnection.qrConsulta.FieldByName('CIDADE_NOME').AsString;
+         edUF.Text         := dmConnection.qrConsulta.FieldByName('CIDADE_UF').AsString;
+      end;
    end;
 end;
 
 procedure TfrmClientes.btPesquisarClick(Sender: TObject);
 begin
-   frmPesquisar.Tag := 1; //clientes
+   frmPesquisar.Tag := 0; //clientes
    frmPesquisar.ShowModal;
-
 end;
 
 procedure TfrmClientes.btSelecionarCidadeClick(Sender: TObject);
 begin
-   frmPesquisar.Tag := 0; //cidades
+   frmPesquisar.Tag := 1; //cidades
    frmPesquisar.ShowModal;
 end;
 

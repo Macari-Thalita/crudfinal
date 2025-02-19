@@ -4,7 +4,7 @@ object frmPesquisar: TfrmPesquisar
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Pesquisar'
-  ClientHeight = 283
+  ClientHeight = 354
   ClientWidth = 541
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -13,7 +13,8 @@ object frmPesquisar: TfrmPesquisar
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
+  OnClose = FormClose
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnPesquisa: TPanel
@@ -37,7 +38,7 @@ object frmPesquisar: TfrmPesquisar
       Width = 75
       Height = 25
       Caption = 'Filtrar'
-      TabOrder = 0
+      TabOrder = 1
       OnClick = btFiltrarClick
     end
     object btSelecionar: TButton
@@ -46,30 +47,43 @@ object frmPesquisar: TfrmPesquisar
       Width = 75
       Height = 25
       Caption = 'Selecionar'
-      TabOrder = 1
+      TabOrder = 2
+      OnClick = btSelecionarClick
     end
     object edPesquisar: TEdit
       Left = 8
       Top = 32
       Width = 521
       Height = 21
-      TabOrder = 2
+      TabOrder = 0
+      OnKeyPress = edPesquisarKeyPress
+    end
+    object btAtualiza: TButton
+      Left = 472
+      Top = 64
+      Width = 59
+      Height = 25
+      Caption = 'Atualizar'
+      TabOrder = 3
+      OnClick = btAtualizaClick
     end
   end
   object pnGrid: TPanel
     Left = 0
-    Top = 104
+    Top = 96
     Width = 541
-    Height = 179
+    Height = 258
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 1
     object gdPesquisar: TDBGrid
       Left = 8
-      Top = 0
+      Top = 8
       Width = 521
-      Height = 169
+      Height = 241
       DataSource = dmConnection.dtsPesquisa
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+      ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
