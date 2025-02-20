@@ -3,10 +3,10 @@ object dmConnection: TdmConnection
   Left = 798
   Top = 305
   Height = 336
-  Width = 471
+  Width = 476
   object sqlConexao: TSQLConnection
     Connected = True
-    ConnectionName = 'Conexao'
+    ConnectionName = 'CRUD'
     DriverName = 'Interbase'
     GetDriverFunc = 'getSQLDriverINTERBASE'
     LibraryName = 'dbexpint.dll'
@@ -15,7 +15,7 @@ object dmConnection: TdmConnection
       'DriverName=Interbase'
       'BlobSize=-1'
       'CommitRetain=False'
-      'Database=localhost:C:\thalita\db\projeto.fdb'
+      'Database=localhost:D:\DB\PROJETO.FDB'
       'ErrorResourceFile='
       'LocaleCode=0000'
       'Password=masterkey'
@@ -23,9 +23,9 @@ object dmConnection: TdmConnection
       'ServerCharSet='
       'SQLDialect=3'
       'Interbase TransIsolation=ReadCommited'
-      'User_Name=sysdba'
+      'User_Name=SYSDBA'
       'WaitOnLocks=True')
-    VendorLib = 'GDS32.DLL'
+    VendorLib = 'gds32.dll'
     Left = 32
     Top = 112
   end

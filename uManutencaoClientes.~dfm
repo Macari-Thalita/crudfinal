@@ -188,7 +188,7 @@ object frmClientes: TfrmClientes
     object btNovo: TButton
       Left = 8
       Top = 8
-      Width = 75
+      Width = 71
       Height = 25
       Caption = 'Novo'
       TabOrder = 0

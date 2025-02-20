@@ -117,15 +117,17 @@ end;
 
 procedure TfrmPesquisar.btSelecionarClick(Sender: TObject);
 begin
-   //se a tabela estiver nula, exit.
-   If dmConnection.cdsPesquisa.IsEmpty then
-   begin
-    Exit;
-   end;
+//   dmConnection.cdsClientes.Edit;
+//
+//      dmConnection.cdsClientesCIDADE_ID.AsInteger  := dmConnection.cdsPesquisa.FieldByName('CIDADE_ID').AsInteger;
+//      dmConnection.cdsClientesCIDADE_NOME.AsString := dmConnection.cdsPesquisa.FieldByName('CIDADE_NOME').AsString;
+//      dmConnection.cdsClientesCIDADE_UF.AsString   := dmConnection.cdsPesquisa.FieldByName('CIDADE_UF').AsString;
+//      
+//      dmConnection.cdsClientesCLI_ID.AsInteger       := dmConnection.cdsPesquisa.FieldByName('CLI_ID').AsInteger;
+//      dmConnection.cdsClientesCLI_NOME.AsString      := dmConnection.cdsPesquisa.FieldByName('CLI_NOME').AsString;
+//      dmConnection.cdsClientesCLI_NASCIDO.AsDateTime := dmConnection.cdsPesquisa.FieldByName('CLI_NASCIDO').AsDateTime;
+//      Close;
 
-
-   dmConnection.cdsClientesCIDADE_ID.AsInteger := dmConnection.cdsPesquisa.FieldByName('CIDADE_ID').AsInteger;
-   Close;
 end;
 
 end.

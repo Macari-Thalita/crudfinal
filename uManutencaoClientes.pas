@@ -110,7 +110,7 @@ end;
 procedure TfrmClientes.btCancelarClick(Sender: TObject);
 begin
    HabilitarDesabilitarComponentes(False, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
-   HabilitarDesabilitarComponentes(True, [btNovo, btPesquisar, btRelatorio]);
+   HabilitarDesabilitarComponentes(True, [btNovo, btPesquisar, btRelatorio, btAlterar]);
 
    dmConnection.cdsClientes.Cancel;
    dmConnection.cdsClientes.ApplyUpdates(0);
