@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, ExtCtrls, StdCtrls, Mask, DBCtrls, uPesquisa;
+  Dialogs, ExtCtrls, StdCtrls, Mask, DBCtrls, uPesquisa, DB;
 
 type
   TfrmClientes = class(TForm)
@@ -46,6 +46,7 @@ type
     procedure edCodigoCidadeExit(Sender: TObject);
     procedure btPesquisarClick(Sender: TObject);
     procedure btSelecionarCidadeClick(Sender: TObject);
+    procedure btRelatorioClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -58,8 +59,9 @@ var
 implementation
 
 uses
- dmConexao;
+ dmConexao, uRelatorioClientes;
 {$R *.dfm}
+
 
 procedure TfrmClientes.HabilitarDesabilitarComponentes(AEstado: Boolean; AComponentes: array of TComponent);
 var
@@ -93,6 +95,7 @@ begin
    Key := UpCase(Key);
 end;
 
+
 procedure TfrmClientes.btNovoClick(Sender: TObject);
 begin
    HabilitarDesabilitarComponentes(True, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
@@ -110,7 +113,7 @@ end;
 procedure TfrmClientes.btCancelarClick(Sender: TObject);
 begin
    HabilitarDesabilitarComponentes(False, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
-   HabilitarDesabilitarComponentes(True, [btNovo, btPesquisar, btRelatorio]);
+   HabilitarDesabilitarComponentes(True, [btNovo, btPesquisar, btRelatorio, btAlterar]);
 
    dmConnection.cdsClientes.Cancel;
    dmConnection.cdsClientes.ApplyUpdates(0);
@@ -122,11 +125,22 @@ end;
 procedure TfrmClientes.btSalvarClick(Sender: TObject);
 var
    LAtual: Integer;
-begin
-   HabilitarDesabilitarComponentes(True, [btPesquisar, btRelatorio, btNovo]);
-   HabilitarDesabilitarComponentes(False, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
 
-   If (dmConnection.cdsClientesCLI_ID.IsNull) then
+begin
+   If(edNomeCliente.Text = EmptyStr) then
+   begin
+      MessageDLG('Preencha o nome corretamente!', mtInformation, [mbOk],0);
+      edNomeCliente.Setfocus;
+      Exit;
+   end
+   else
+   begin
+      HabilitarDesabilitarComponentes(True, [btPesquisar, btRelatorio, btNovo, btaLTERAR]);
+      HabilitarDesabilitarComponentes(False, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
+   end;
+
+
+   If (dmConnection.cdsClientes.State = dsInsert) then
    begin
       dmConnection.qrConsulta.Close;
       dmConnection.qrConsulta.SQL.Clear;
@@ -145,9 +159,8 @@ begin
       dmConnection.qrConsulta.Close;
    end;
 
-   dmConnection.cdsClientes.Post;
-   dmConnection.cdsClientes.ApplyUpdates(0);
-
+      dmConnection.cdsClientes.Post;
+      dmConnection.cdsClientes.ApplyUpdates(0);
 
    btNovo.SetFocus;
 end;
@@ -178,14 +191,15 @@ end;
 procedure TfrmClientes.btAlterarClick(Sender: TObject);
 begin
    dmConnection.cdsClientes.Edit;
-   
+
    HabilitarDesabilitarComponentes(True, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
+   HabilitarDesabilitarComponentes(False, [btAlterar, btNovo, btPesquisar, btRelatorio]);
    edNomeCliente.SetFocus;
 end;
 
 procedure TfrmClientes.edCodigoCidadeExit(Sender: TObject);
 begin
-   if(edCodigoCidade.Text <> EmptyStr)then
+   if (edCodigoCidade.Text <> EmptyStr)then
    begin
       dmConnection.qrConsulta.Close;
       dmConnection.qrConsulta.SQL.Clear;
@@ -193,7 +207,7 @@ begin
       dmConnection.qrConsulta.ParamByName('pCIDADE').AsString := edCodigoCidade.Text;
       dmConnection.qrConsulta.Open;
 
-      If (dmConnection.qrConsulta.IsEmpty) then
+      if (dmConnection.qrConsulta.IsEmpty) then
       begin
          MessageDLG('Cidade não encontrada. Verifique!', mtInformation, [mbOk],0);
          edCodigoCidade.Setfocus;
@@ -210,12 +224,22 @@ procedure TfrmClientes.btPesquisarClick(Sender: TObject);
 begin
    frmPesquisar.Tag := 0; //clientes
    frmPesquisar.ShowModal;
+
+   HabilitarDesabilitarComponentes(True, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
+   HabilitarDesabilitarComponentes(False, [btAlterar, btNovo, btPesquisar, btRelatorio]);
+   edNomeCliente.SetFocus;
+
 end;
 
 procedure TfrmClientes.btSelecionarCidadeClick(Sender: TObject);
 begin
    frmPesquisar.Tag := 1; //cidades
    frmPesquisar.ShowModal;
+end;
+
+procedure TfrmClientes.btRelatorioClick(Sender: TObject);
+begin
+   frmRelatorioClientes.ShowModal;
 end;
 
 end.

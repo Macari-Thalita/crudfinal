@@ -50,11 +50,10 @@ begin
    else begin
       dmConnection.dsPesquisa.Close;
       dmConnection.cdsPesquisa.Close;
-      dmConnection.dsPesquisa.CommandText := 'SELECT * FROM CLIENTES';
+      dmConnection.dsPesquisa.CommandText := 'SELECT * FROM CLIENTES LEFT OUTER JOIN CIDADES ON CIDADES.CIDADE_ID = CLIENTES.CIDADE_ID';
       dmConnection.cdsPesquisa.Open;
    end;
 end;
-
 
 procedure TfrmPesquisar.btFiltrarClick(Sender: TObject);
 begin
@@ -70,7 +69,7 @@ begin
       begin
          dmConnection.cdsPesquisa.Close;
          dmConnection.dsPesquisa.Close;
-         dmConnection.dsPesquisa.CommandText := ('SELECT * FROM CLIENTES WHERE CLI_NOME LIKE :CLI_NOME');
+         dmConnection.dsPesquisa.CommandText := ('SELECT * FROM CLIENTES LEFT OUTER JOIN CIDADES ON CIDADES.CIDADE_ID = CLIENTES.CIDADE_ID WHERE CLI_NOME LIKE :CLI_NOME');
          dmConnection.dsPesquisa.ParamByName('CLI_NOME').AsString := '%' + edPesquisar.Text + '%';
          dmConnection.cdsPesquisa.Open;
       end
@@ -89,6 +88,7 @@ begin
    begin
       MessageDLG('Nenhum registro encontrado. Verifique!', mtInformation, [mbOk], 0);
       edPesquisar.SetFocus;
+      SelecionaClienteOuCidade();
    end;
 end;
 
@@ -113,21 +113,26 @@ end;
 procedure TfrmPesquisar.btAtualizaClick(Sender: TObject);
 begin
    SelecionaClienteOuCidade();
+   edPesquisar.Text := EmptyStr;   
 end;
 
 procedure TfrmPesquisar.btSelecionarClick(Sender: TObject);
 begin
-//   dmConnection.cdsClientes.Edit;
-//
-//      dmConnection.cdsClientesCIDADE_ID.AsInteger  := dmConnection.cdsPesquisa.FieldByName('CIDADE_ID').AsInteger;
-//      dmConnection.cdsClientesCIDADE_NOME.AsString := dmConnection.cdsPesquisa.FieldByName('CIDADE_NOME').AsString;
-//      dmConnection.cdsClientesCIDADE_UF.AsString   := dmConnection.cdsPesquisa.FieldByName('CIDADE_UF').AsString;
-//      
-//      dmConnection.cdsClientesCLI_ID.AsInteger       := dmConnection.cdsPesquisa.FieldByName('CLI_ID').AsInteger;
-//      dmConnection.cdsClientesCLI_NOME.AsString      := dmConnection.cdsPesquisa.FieldByName('CLI_NOME').AsString;
-//      dmConnection.cdsClientesCLI_NASCIDO.AsDateTime := dmConnection.cdsPesquisa.FieldByName('CLI_NASCIDO').AsDateTime;
-//      Close;
-
+   if (frmPesquisar.Tag = 1) then
+   begin
+      dmConnection.cdsClientes.Edit;
+      dmConnection.cdsClientesCIDADE_ID.AsInteger    := dmConnection.cdsPesquisa.FieldByName('CIDADE_ID').AsInteger;
+      dmConnection.cdsClientesCIDADE_NOME.AsString   := dmConnection.cdsPesquisa.FieldByName('CIDADE_NOME').AsString;
+      dmConnection.cdsClientesCIDADE_UF.AsString     := dmConnection.cdsPesquisa.FieldByName('CIDADE_UF').AsString;
+      Close;
+   end
+   else
+   begin
+      dmConnection.cdsClientes.First;
+      dmConnection.cdsClientes.Locate('CLI_ID', dmConnection.cdsPesquisa.FieldByName('CLI_ID').AsString, []);
+      dmConnection.cdsClientes.Edit;
+      Close;
+   end;
 end;
 
 end.

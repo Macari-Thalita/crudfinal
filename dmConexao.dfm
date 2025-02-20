@@ -1,7 +1,7 @@
 object dmConnection: TdmConnection
   OldCreateOrder = False
-  Left = 798
-  Top = 305
+  Left = 800
+  Top = 307
   Height = 336
   Width = 476
   object sqlConexao: TSQLConnection
@@ -15,7 +15,7 @@ object dmConnection: TdmConnection
       'DriverName=Interbase'
       'BlobSize=-1'
       'CommitRetain=False'
-      'Database=localhost:D:\DB\PROJETO.FDB'
+      'Database=localhost:C:\Thalita\DB\PROJETO.FDB'
       'ErrorResourceFile='
       'LocaleCode=0000'
       'Password=masterkey'
@@ -23,7 +23,7 @@ object dmConnection: TdmConnection
       'ServerCharSet='
       'SQLDialect=3'
       'Interbase TransIsolation=ReadCommited'
-      'User_Name=SYSDBA'
+      'User_Name=sysdba'
       'WaitOnLocks=True')
     VendorLib = 'gds32.dll'
     Left = 32
@@ -129,6 +129,7 @@ object dmConnection: TdmConnection
   object dsPesquisa: TSQLDataSet
     NoMetadata = True
     SQLConnection = sqlConexao
+    CommandText = 'select * from CLIENTES'
     Params = <>
     Left = 392
     Top = 32
@@ -141,6 +142,7 @@ object dmConnection: TdmConnection
     Top = 96
   end
   object cdsPesquisa: TClientDataSet
+    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'dspPesquisa'

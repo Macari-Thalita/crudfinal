@@ -1,11 +1,11 @@
 object frmPesquisar: TfrmPesquisar
-  Left = 738
-  Top = 332
-  BorderIcons = [biSystemMenu]
+  Left = 646
+  Top = 329
+  BorderIcons = []
   BorderStyle = bsSingle
   Caption = 'Pesquisar'
   ClientHeight = 354
-  ClientWidth = 541
+  ClientWidth = 708
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object frmPesquisar: TfrmPesquisar
   object pnPesquisa: TPanel
     Left = 0
     Top = 0
-    Width = 541
+    Width = 708
     Height = 97
     Align = alTop
     BevelOuter = bvNone
@@ -53,13 +53,13 @@ object frmPesquisar: TfrmPesquisar
     object edPesquisar: TEdit
       Left = 8
       Top = 32
-      Width = 521
+      Width = 689
       Height = 21
       TabOrder = 0
       OnKeyPress = edPesquisarKeyPress
     end
     object btAtualiza: TButton
-      Left = 472
+      Left = 632
       Top = 64
       Width = 59
       Height = 25
@@ -71,7 +71,7 @@ object frmPesquisar: TfrmPesquisar
   object pnGrid: TPanel
     Left = 0
     Top = 96
-    Width = 541
+    Width = 708
     Height = 258
     Align = alBottom
     BevelOuter = bvNone
@@ -79,7 +79,7 @@ object frmPesquisar: TfrmPesquisar
     object gdPesquisar: TDBGrid
       Left = 8
       Top = 8
-      Width = 521
+      Width = 689
       Height = 241
       DataSource = dmConnection.dtsPesquisa
       Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]

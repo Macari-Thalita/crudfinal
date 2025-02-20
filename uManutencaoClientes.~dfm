@@ -1,6 +1,6 @@
 object frmClientes: TfrmClientes
-  Left = 766
-  Top = 392
+  Left = 767
+  Top = 394
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Cadastro de Clientes'
@@ -220,6 +220,7 @@ object frmClientes: TfrmClientes
       Height = 25
       Caption = 'Relat'#243'rios'
       TabOrder = 5
+      OnClick = btRelatorioClick
     end
   end
 end
