@@ -135,7 +135,7 @@ begin
    end
    else
    begin
-      HabilitarDesabilitarComponentes(True, [btPesquisar, btRelatorio, btNovo, btaLTERAR]);
+      HabilitarDesabilitarComponentes(True, [btPesquisar, btRelatorio, btNovo, btAlterar]);
       HabilitarDesabilitarComponentes(False, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
    end;
 

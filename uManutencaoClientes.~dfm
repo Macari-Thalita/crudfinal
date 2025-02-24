@@ -13,6 +13,7 @@ object frmClientes: TfrmClientes
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13

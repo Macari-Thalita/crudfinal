@@ -1,11 +1,11 @@
 object frmRelatorioClientes: TfrmRelatorioClientes
-  Left = 362
-  Top = 169
+  Left = 522
+  Top = 270
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rio de Clientes'
-  ClientHeight = 748
-  ClientWidth = 1478
+  ClientHeight = 125
+  ClientWidth = 490
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -16,19 +16,43 @@ object frmRelatorioClientes: TfrmRelatorioClientes
   OldCreateOrder = False
   Position = poMainFormCenter
   Scaled = False
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
+  object lbCidade: TLabel
+    Left = 9
+    Top = 32
+    Width = 36
+    Height = 13
+    Caption = 'Cidade:'
+  end
+  object lbNomeCidade: TLabel
+    Left = 97
+    Top = 32
+    Width = 67
+    Height = 13
+    Caption = 'Nome Cidade:'
+    Enabled = False
+  end
+  object lbUF: TLabel
+    Left = 457
+    Top = 32
+    Width = 17
+    Height = 13
+    Caption = 'UF:'
+    Enabled = False
+  end
   object qckRepClientes: TQuickRep
-    Left = 80
-    Top = 128
-    Width = 1267
-    Height = 979
+    Left = 16
+    Top = 152
+    Width = 845
+    Height = 653
     Frame.Color = clBlack
     Frame.DrawTop = False
     Frame.DrawBottom = False
     Frame.DrawLeft = False
     Frame.DrawRight = False
-    DataSet = qrConsultaRel
+    DataSet = cdsRelatorio
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -13
@@ -72,15 +96,15 @@ object frmRelatorioClientes: TfrmRelatorioClientes
     PrintIfEmpty = True
     SnapToGrid = True
     Units = MM
-    Zoom = 120
+    Zoom = 80
     PrevFormStyle = fsNormal
     PreviewInitialState = wsNormal
     PrevInitialZoom = qrZoomToFit
     object ColumnHeaderBand1: TQRBand
-      Left = 45
-      Top = 163
-      Width = 1176
-      Height = 43
+      Left = 30
+      Top = 108
+      Width = 785
+      Height = 29
       Frame.Color = clBlack
       Frame.DrawTop = False
       Frame.DrawBottom = False
@@ -92,142 +116,172 @@ object frmRelatorioClientes: TfrmRelatorioClientes
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        94.8090277777778
-        2592.91666666667)
+        95.9114583333333
+        2596.22395833333)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbColumnHeader
       object qrCodigo: TQRLabel
-        Left = 24
-        Top = 24
-        Width = 49
-        Height = 20
+        Left = 16
+        Top = 16
+        Width = 37
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
+          46.3020833333333
           52.9166666666667
           52.9166666666667
-          108.038194444444)
+          122.369791666667)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Caption = 'C'#243'digo'
         Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object qrNome: TQRLabel
-        Left = 96
-        Top = 24
-        Width = 42
-        Height = 20
+        Left = 64
+        Top = 16
+        Width = 30
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
+          46.3020833333333
           211.666666666667
           52.9166666666667
-          92.6041666666667)
+          99.21875)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Caption = 'Nome'
         Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object qrNascmimento: TQRLabel
-        Left = 480
-        Top = 24
-        Width = 84
-        Height = 20
+        Left = 310
+        Top = 16
+        Width = 60
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
-          1058.33333333333
+          46.3020833333333
+          1025.26041666667
           52.9166666666667
-          185.208333333333)
+          198.4375)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Caption = 'Nascimento'
         Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object qrCidade: TQRLabel
-        Left = 576
-        Top = 24
-        Width = 49
-        Height = 20
+        Left = 384
+        Top = 16
+        Width = 37
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
+          46.3020833333333
           1270
           52.9166666666667
-          108.038194444444)
+          122.369791666667)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Caption = 'Cidade'
         Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object qrUF: TQRLabel
-        Left = 1068
-        Top = 24
-        Width = 22
-        Height = 20
+        Left = 712
+        Top = 16
+        Width = 14
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
+          46.3020833333333
           2354.79166666667
           52.9166666666667
-          48.5069444444444)
+          46.3020833333333)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Caption = 'UF'
         Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        ParentFont = False
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
     end
     object DetailBand1: TQRBand
-      Left = 45
-      Top = 206
-      Width = 1176
-      Height = 27
+      Left = 30
+      Top = 169
+      Width = 785
+      Height = 18
       Frame.Color = clBlack
       Frame.DrawTop = False
       Frame.DrawBottom = False
@@ -240,135 +294,135 @@ object frmRelatorioClientes: TfrmRelatorioClientes
       ForceNewPage = False
       Size.Values = (
         59.53125
-        2592.91666666667)
+        2596.22395833333)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbDetail
       object QRDBText1: TQRDBText
-        Left = 28
-        Top = 4
-        Width = 47
-        Height = 20
+        Left = 18
+        Top = 2
+        Width = 31
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
-          61.7361111111111
-          8.81944444444444
-          103.628472222222)
+          46.3020833333333
+          59.53125
+          6.61458333333333
+          102.526041666667)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Color = clWhite
-        DataSet = qrConsultaRel
+        DataSet = cdsRelatorio
         DataField = 'CLI_ID'
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object QRDBText2: TQRDBText
-        Left = 96
-        Top = 4
-        Width = 79
-        Height = 20
+        Left = 64
+        Top = 2
+        Width = 53
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
+          46.3020833333333
           211.666666666667
-          8.81944444444444
-          174.184027777778)
+          6.61458333333333
+          175.286458333333)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Color = clWhite
-        DataSet = qrConsultaRel
+        DataSet = cdsRelatorio
         DataField = 'CLI_NOME'
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object QRDBText3: TQRDBText
-        Left = 464
-        Top = 4
-        Width = 102
-        Height = 20
+        Left = 310
+        Top = 2
+        Width = 68
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
-          1023.05555555556
-          8.81944444444444
+          46.3020833333333
+          1025.26041666667
+          6.61458333333333
           224.895833333333)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Color = clWhite
-        DataSet = qrConsultaRel
+        DataSet = cdsRelatorio
         DataField = 'CLI_NASCIDO'
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object QRDBText4: TQRDBText
-        Left = 576
-        Top = 4
-        Width = 114
-        Height = 20
+        Left = 384
+        Top = 2
+        Width = 76
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
+          46.3020833333333
           1270
-          8.81944444444444
+          6.61458333333333
           251.354166666667)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Color = clWhite
-        DataSet = qrConsultaRel
+        DataSet = cdsRelatorio
         DataField = 'CIDADE_NOME'
         Transparent = False
         WordWrap = True
         FontSize = 10
       end
       object QRDBText5: TQRDBText
-        Left = 1072
-        Top = 4
-        Width = 88
-        Height = 20
+        Left = 714
+        Top = 2
+        Width = 58
+        Height = 14
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
         Frame.DrawLeft = False
         Frame.DrawRight = False
         Size.Values = (
-          44.0972222222222
-          2363.61111111111
-          8.81944444444444
-          194.027777777778)
+          46.3020833333333
+          2361.40625
+          6.61458333333333
+          191.822916666667)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
         AutoStretch = False
         Color = clWhite
-        DataSet = qrConsultaRel
+        DataSet = cdsRelatorio
         DataField = 'CIDADE_UF'
         Transparent = False
         WordWrap = True
@@ -376,10 +430,10 @@ object frmRelatorioClientes: TfrmRelatorioClientes
       end
     end
     object PageHeaderBand1: TQRBand
-      Left = 45
-      Top = 45
-      Width = 1176
-      Height = 118
+      Left = 30
+      Top = 30
+      Width = 785
+      Height = 78
       Frame.Color = clBlack
       Frame.DrawTop = False
       Frame.DrawBottom = False
@@ -391,16 +445,16 @@ object frmRelatorioClientes: TfrmRelatorioClientes
       ForceNewColumn = False
       ForceNewPage = False
       Size.Values = (
-        260.173611111111
-        2592.91666666667)
+        257.96875
+        2596.22395833333)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbPageHeader
       object qrTitulo: TQRLabel
-        Left = 450
-        Top = 48
-        Width = 251
-        Height = 30
+        Left = 300
+        Top = 32
+        Width = 167
+        Height = 20
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
@@ -410,7 +464,7 @@ object frmRelatorioClientes: TfrmRelatorioClientes
           66.1458333333333
           992.1875
           105.833333333333
-          553.420138888889)
+          552.317708333333)
         Alignment = taLeftJustify
         AlignToBand = False
         AutoSize = True
@@ -428,10 +482,10 @@ object frmRelatorioClientes: TfrmRelatorioClientes
         FontSize = 16
       end
       object QRSysData1: TQRSysData
-        Left = 1668
-        Top = 108
-        Width = 81
-        Height = 20
+        Left = 1112
+        Top = 72
+        Width = 54
+        Height = 13
         Frame.Color = clBlack
         Frame.DrawTop = False
         Frame.DrawBottom = False
@@ -452,10 +506,10 @@ object frmRelatorioClientes: TfrmRelatorioClientes
       end
     end
     object SummaryBand1: TQRBand
-      Left = 45
-      Top = 233
-      Width = 1176
-      Height = 36
+      Left = 30
+      Top = 187
+      Width = 785
+      Height = 24
       Frame.Color = clBlack
       Frame.DrawTop = False
       Frame.DrawBottom = False
@@ -468,15 +522,72 @@ object frmRelatorioClientes: TfrmRelatorioClientes
       ForceNewPage = False
       Size.Values = (
         79.375
-        2592.91666666667)
+        2596.22395833333)
       PreCaluculateBandHeight = False
       KeepOnOnePage = False
       BandType = rbSummary
     end
+    object QRGroup1: TQRGroup
+      Left = 30
+      Top = 137
+      Width = 785
+      Height = 32
+      Frame.Color = clBlack
+      Frame.DrawTop = False
+      Frame.DrawBottom = False
+      Frame.DrawLeft = False
+      Frame.DrawRight = False
+      AlignToBottom = False
+      BeforePrint = QRGroup1BeforePrint
+      Color = clWhite
+      TransparentBand = False
+      ForceNewColumn = False
+      ForceNewPage = False
+      Size.Values = (
+        105.833333333333
+        2596.22395833333)
+      PreCaluculateBandHeight = False
+      KeepOnOnePage = False
+      Expression = 'cdsRelatorio.CIDADE_NOME'
+      Master = qckRepClientes
+      ReprintOnNewPage = False
+      object qrNomeCidade: TQRLabel
+        Left = 8
+        Top = 8
+        Width = 68
+        Height = 13
+        Frame.Color = clBlack
+        Frame.DrawTop = False
+        Frame.DrawBottom = False
+        Frame.DrawLeft = False
+        Frame.DrawRight = False
+        Size.Values = (
+          42.9947916666667
+          26.4583333333333
+          26.4583333333333
+          224.895833333333)
+        Alignment = taLeftJustify
+        AlignToBand = False
+        AutoSize = True
+        AutoStretch = False
+        Caption = 'Nome cidade'
+        Color = clWhite
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Arial'
+        Font.Style = [fsBold]
+        OnPrint = qrNomeCidadePrint
+        ParentFont = False
+        Transparent = False
+        WordWrap = True
+        FontSize = 10
+      end
+    end
   end
   object RadioButton1: TRadioButton
     Left = 8
-    Top = 16
+    Top = 8
     Width = 113
     Height = 17
     Caption = 'Clientes'
@@ -485,20 +596,134 @@ object frmRelatorioClientes: TfrmRelatorioClientes
     TabStop = True
   end
   object btVisualizar: TButton
-    Left = 104
-    Top = 56
+    Left = 400
+    Top = 80
     Width = 75
     Height = 25
     Caption = 'Visualizar'
     TabOrder = 2
     OnClick = btVisualizarClick
   end
-  object qrConsultaRel: TSQLQuery
+  object edCodigoCidade: TDBEdit
+    Left = 8
+    Top = 45
+    Width = 49
+    Height = 21
+    DataField = 'CIDADE_ID'
+    DataSource = dmConnection.dtsClientes
+    TabOrder = 3
+  end
+  object btSelecionarCidade: TButton
+    Left = 62
+    Top = 49
+    Width = 25
+    Height = 17
+    Caption = '...'
+    TabOrder = 4
+    OnClick = btSelecionarCidadeClick
+  end
+  object edNomeCidade: TDBEdit
+    Left = 96
+    Top = 45
+    Width = 353
+    Height = 21
+    DataField = 'CIDADE_NOME'
+    DataSource = dmConnection.dtsClientes
+    Enabled = False
+    TabOrder = 5
+  end
+  object edUF: TDBEdit
+    Left = 456
+    Top = 45
+    Width = 25
+    Height = 21
+    DataField = 'CIDADE_UF'
+    DataSource = dmConnection.dtsClientes
+    Enabled = False
+    TabOrder = 6
+  end
+  object ckAgrupar: TCheckBox
+    Left = 88
+    Top = 88
+    Width = 97
+    Height = 17
+    Caption = 'Agrupar'
+    TabOrder = 7
+  end
+  object dstRelatorio: TSQLDataSet
     NoMetadata = True
     SQLConnection = dmConnection.sqlConexao
-    DataSource = dmConnection.dtsPesquisa
+    CommandText = 
+      'SELECT CLIENTES.*, CIDADES.* FROM CLIENTES LEFT OUTER JOIN CIDAD' +
+      'ES ON CIDADES.CIDADE_ID = CIDADES.CIDADE_ID;'
     Params = <>
-    Left = 760
-    Top = 48
+    Left = 496
+    Top = 8
+    object dstRelatorioCLI_ID: TIntegerField
+      FieldName = 'CLI_ID'
+      Required = True
+    end
+    object dstRelatorioCLI_NOME: TStringField
+      FieldName = 'CLI_NOME'
+      Required = True
+      Size = 50
+    end
+    object dstRelatorioCLI_NASCIDO: TDateField
+      FieldName = 'CLI_NASCIDO'
+    end
+    object dstRelatorioCIDADE_ID: TIntegerField
+      FieldName = 'CIDADE_ID'
+    end
+    object dstRelatorioCIDADE_ID_1: TIntegerField
+      FieldName = 'CIDADE_ID_1'
+    end
+    object dstRelatorioCIDADE_NOME: TStringField
+      FieldName = 'CIDADE_NOME'
+      Size = 50
+    end
+    object dstRelatorioCIDADE_UF: TStringField
+      FieldName = 'CIDADE_UF'
+      Size = 2
+    end
+  end
+  object dspRelatorio: TDataSetProvider
+    DataSet = dstRelatorio
+    Constraints = True
+    Options = [poRetainServerOrder]
+    Left = 544
+    Top = 8
+  end
+  object cdsRelatorio: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspRelatorio'
+    Left = 592
+    Top = 8
+    object cdsRelatorioCLI_ID: TIntegerField
+      FieldName = 'CLI_ID'
+      Required = True
+    end
+    object cdsRelatorioCLI_NOME: TStringField
+      FieldName = 'CLI_NOME'
+      Required = True
+      Size = 50
+    end
+    object cdsRelatorioCLI_NASCIDO: TDateField
+      FieldName = 'CLI_NASCIDO'
+    end
+    object cdsRelatorioCIDADE_ID: TIntegerField
+      FieldName = 'CIDADE_ID'
+    end
+    object cdsRelatorioCIDADE_ID_1: TIntegerField
+      FieldName = 'CIDADE_ID_1'
+    end
+    object cdsRelatorioCIDADE_NOME: TStringField
+      FieldName = 'CIDADE_NOME'
+      Size = 50
+    end
+    object cdsRelatorioCIDADE_UF: TStringField
+      FieldName = 'CIDADE_UF'
+      Size = 2
+    end
   end
 end

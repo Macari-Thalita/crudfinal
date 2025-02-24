@@ -239,7 +239,7 @@ end;
 
 procedure TfrmClientes.btRelatorioClick(Sender: TObject);
 begin
-   frmRelatorioClientes.ShowModal;
+   frmRelatorioClientes.Show;
 end;
 
 end.
