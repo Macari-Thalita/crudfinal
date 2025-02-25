@@ -4,7 +4,7 @@ object frmRelatorioClientes: TfrmRelatorioClientes
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Relat'#243'rio de Clientes'
-  ClientHeight = 125
+  ClientHeight = 113
   ClientWidth = 490
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET

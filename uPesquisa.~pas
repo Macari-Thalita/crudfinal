@@ -34,13 +34,13 @@ var
 
 implementation
 
-uses uManutencaoClientes;
+uses uManutencaoClientes, uManutencaoCidades;
 
 {$R *.dfm}
 
 procedure TfrmPesquisar.SelecionaClienteOuCidade();
 begin
-   if (frmPesquisar.Tag = 1) then
+   if (frmPesquisar.Tag = 1) or (frmPesquisar.Tag = 2)then
    begin
       dmConnection.dsPesquisa.Close;
       dmConnection.cdsPesquisa.Close;
@@ -126,12 +126,19 @@ begin
       dmConnection.cdsClientesCIDADE_UF.AsString     := dmConnection.cdsPesquisa.FieldByName('CIDADE_UF').AsString;
       Close;
    end
-   else
+   else if (frmPesquisar.Tag = 0) then
    begin
       dmConnection.cdsClientes.First;
       dmConnection.cdsClientes.Locate('CLI_ID', dmConnection.cdsPesquisa.FieldByName('CLI_ID').AsString, []);
       dmConnection.cdsClientes.Edit;
       Close;
+   end
+   else
+   begin
+      frmCidades.edCodigoCidade.Text := dmConnection.cdsPesquisa.FieldByName('CIDADE_ID').AsString;
+      frmCidades.edNomeCidade.Text   := dmConnection.cdsPesquisa.FieldByName('CIDADE_NOME').AsString;
+      frmCidades.edUF.Text           := dmConnection.cdsPesquisa.FieldByName('CIDADE_UF').AsString;
+
    end;
 end;
 

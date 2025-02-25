@@ -3,7 +3,7 @@ object frmCidades: TfrmCidades
   Top = 323
   Width = 500
   Height = 178
-  Caption = 'frmCidades'
+  Caption = 'Cadastro de Cidades'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -62,6 +62,7 @@ object frmCidades: TfrmCidades
       Height = 21
       Enabled = False
       TabOrder = 1
+      OnKeyPress = edNomeCidadeKeyPress
     end
     object edUF: TEdit
       Left = 448
@@ -70,14 +71,7 @@ object frmCidades: TfrmCidades
       Height = 21
       Enabled = False
       TabOrder = 2
-    end
-    object DBNavigator1: TDBNavigator
-      Left = 248
-      Top = 64
-      Width = 240
-      Height = 25
-      DataSource = dmConnection.dtsClientes
-      TabOrder = 3
+      OnKeyPress = edUFKeyPress
     end
   end
   object pnBotoes: TPanel
@@ -89,14 +83,14 @@ object frmCidades: TfrmCidades
     Anchors = [akLeft, akBottom]
     BevelOuter = bvNone
     TabOrder = 1
-    object frm: TButton
+    object btAlterar: TButton
       Left = 88
       Top = 8
       Width = 75
       Height = 25
       Caption = 'Alterar'
       TabOrder = 1
-      OnClick = frmClick
+      OnClick = btAlterarClick
     end
     object btSalvar: TButton
       Left = 168
@@ -134,6 +128,7 @@ object frmCidades: TfrmCidades
       Height = 25
       Caption = 'Pesquisar'
       TabOrder = 4
+      OnClick = btPesquisarClick
     end
     object btRelatorio: TButton
       Left = 408
@@ -142,6 +137,7 @@ object frmCidades: TfrmCidades
       Height = 25
       Caption = 'Relat'#243'rios'
       TabOrder = 5
+      OnClick = btRelatorioClick
     end
   end
   object SQLQuery1: TSQLQuery

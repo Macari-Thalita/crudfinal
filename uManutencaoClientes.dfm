@@ -5,7 +5,7 @@ object frmClientes: TfrmClientes
   BorderStyle = bsSingle
   Caption = 'Cadastro de Clientes'
   ClientHeight = 210
-  ClientWidth = 486
+  ClientWidth = 488
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,7 +20,7 @@ object frmClientes: TfrmClientes
   object pnInformacoes: TPanel
     Left = 0
     Top = 0
-    Width = 486
+    Width = 488
     Height = 161
     Align = alTop
     BevelOuter = bvNone
@@ -161,7 +161,7 @@ object frmClientes: TfrmClientes
   object pnBotoes: TPanel
     Left = 0
     Top = 161
-    Width = 486
+    Width = 488
     Height = 49
     Align = alBottom
     Anchors = [akLeft, akBottom]

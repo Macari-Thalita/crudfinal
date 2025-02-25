@@ -35,7 +35,7 @@ type
     procedure btCancelarClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
     procedure HabilitarDesabilitarComponentes(AEstado: Boolean; AComponentes: array of TComponent);
-    procedure LimparCampos(AEstado: Boolean; AComponentes: array of TComponent);
+    procedure LimparCampos(AComponentes: array of TComponent);
     procedure DigitarSomenteNumeros(Sender: TObject;  var Key: Char);
     procedure TextoEmCaixaAlta(Sender: TObject;  var Key: Char);
     procedure edCodigoCidadeKeyPress(Sender: TObject; var Key: Char);
@@ -67,13 +67,13 @@ procedure TfrmClientes.HabilitarDesabilitarComponentes(AEstado: Boolean; ACompon
 var
    i: Integer;
 begin
-   For i := Low(AComponentes) to High(AComponentes) do
+   for i := Low(AComponentes) to High(AComponentes) do
    begin
       TWinControl(AComponentes[i]).Enabled := AEstado;
    end;
 end;
 
-procedure TfrmClientes.LimparCampos(AEstado: Boolean; AComponentes: array of TComponent);
+procedure TfrmClientes.LimparCampos(AComponentes: array of TComponent);
 var
    i: Integer;
 begin
@@ -127,7 +127,7 @@ var
    LAtual: Integer;
 
 begin
-   If(edNomeCliente.Text = EmptyStr) then
+   if(edNomeCliente.Text = EmptyStr) then
    begin
       MessageDLG('Preencha o nome corretamente!', mtInformation, [mbOk],0);
       edNomeCliente.Setfocus;
@@ -140,7 +140,7 @@ begin
    end;
 
 
-   If (dmConnection.cdsClientes.State = dsInsert) then
+   if (dmConnection.cdsClientes.State = dsInsert) then
    begin
       dmConnection.qrConsulta.Close;
       dmConnection.qrConsulta.SQL.Clear;
@@ -222,24 +222,30 @@ end;
 
 procedure TfrmClientes.btPesquisarClick(Sender: TObject);
 begin
-   frmPesquisar.Tag := 0; //clientes
-   frmPesquisar.ShowModal;
-
    HabilitarDesabilitarComponentes(True, [btSalvar, btCancelar, btSelecionarCidade, edNomeCliente, edNascimento, edCodigoCidade, lbNome, lbNascimento, lbCidade, lbCodigo, lbNomeCidade, lbUF]);
    HabilitarDesabilitarComponentes(False, [btAlterar, btNovo, btPesquisar, btRelatorio]);
-   edNomeCliente.SetFocus;
 
+   Application.CreateForm(TfrmPesquisar, frmPesquisar);
+   frmPesquisar.Tag := 0; //clientes
+   frmPesquisar.ShowModal();
+   frmPesquisar.Free;
+
+   edNomeCliente.SetFocus;
 end;
 
 procedure TfrmClientes.btSelecionarCidadeClick(Sender: TObject);
 begin
+   Application.CreateForm(TfrmPesquisar, frmPesquisar);
    frmPesquisar.Tag := 1; //cidades
-   frmPesquisar.ShowModal;
+   frmPesquisar.ShowModal();
+   frmPesquisar.Free;
 end;
 
 procedure TfrmClientes.btRelatorioClick(Sender: TObject);
 begin
-   frmRelatorioClientes.Show;
+   Application.CreateForm(TfrmRelatorioClientes, frmRelatorioClientes);
+   frmRelatorioClientes.ShowModal();
+   frmRelatorioClientes.Free;
 end;
 
 end.

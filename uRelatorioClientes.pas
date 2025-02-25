@@ -113,8 +113,10 @@ end;
 
 procedure TfrmRelatorioClientes.btSelecionarCidadeClick(Sender: TObject);
 begin
+   Application.CreateForm(TfrmPesquisar, frmPesquisar);
    frmPesquisar.Tag := 1; //cidades
-   frmPesquisar.ShowModal;   
+   frmPesquisar.ShowModal();
+   frmPesquisar.Free;
 end;
 
 procedure TfrmRelatorioClientes.FormShow(Sender: TObject);
